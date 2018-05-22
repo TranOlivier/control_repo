@@ -10,4 +10,5 @@ node 'puppet' {
 }
 
 node /^client/{
+  include role::client_role
 }
