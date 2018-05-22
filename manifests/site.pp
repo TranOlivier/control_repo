@@ -1,4 +1,7 @@
 node default {
+  user { 'bibi':
+    ensure => present,
+  }
 }
 
 
