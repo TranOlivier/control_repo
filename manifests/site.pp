@@ -1,10 +1,7 @@
 node default {
-  user { 'admin':
-    ensure => present,
-  }
-  
-  file { '/root/README':
-    ensure => present,
-    content => "Ceci est un readme\nMon adresse IP est ${ipadress}\n",
-  }
+}
+
+
+node 'puppet' {
+  include role::master_server
 }
