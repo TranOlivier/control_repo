@@ -1,7 +1,7 @@
 class profile::base {
   user { 'admin':
     ensure  => 'present',
-    groups => 'wheel',
+    groups => 'sudo',
   }
   
   file { '/root/README':
