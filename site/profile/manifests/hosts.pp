@@ -8,6 +8,6 @@ class profile::hosts {
   host { 'client2':
     ensure       => present,
     host_aliases => ['client-test3','client-dev3'],
-    ip           => '10.94.69.37',
+    ip           => '10.94.69.38',
   }
 }
