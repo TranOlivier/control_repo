@@ -2,11 +2,7 @@ class profile::base {
   user { 'admin':
     ensure  => 'present',
     groups => 'sudo',
-  }
-  
-  file { '/root/README':
-    ensure => file,
-    content => "Bienvenue sur ${fqdn}\n",
+    password => 'password',
   }
   
   file { '/root/MOTD':
