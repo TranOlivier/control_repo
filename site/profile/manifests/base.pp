@@ -10,5 +10,7 @@ class profile::base {
     content => "Knowledge is power, protect it\n",
   }
   
+  
+  
 }
 
