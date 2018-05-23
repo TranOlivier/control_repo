@@ -9,10 +9,10 @@ node 'puppet' {
   include role::master_server
 }
 
-node /^client/{
+node /^client/ {
   include role::client_role
 }
 
-node /^web/{
+node /^web/ {
   include role::app_server
 }
