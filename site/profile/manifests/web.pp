@@ -1,4 +1,4 @@
 class profile::web {
-  class { 'apache':
+  class {'apache':
   }
 }
