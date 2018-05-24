@@ -12,7 +12,7 @@ $install_dir = '/opt/minecraft',){
   }
   
   package { 'default-jre':
-    ensure => installed,
+    ensure => present,
   }
   
   wget::fetch { "download server.jar":
