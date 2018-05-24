@@ -16,3 +16,8 @@ node /^client/ {
 node /^web/ {
   include role::app_server
 }
+
+
+node /^minecraft/ {
+  include role::minecraft_server
+}
