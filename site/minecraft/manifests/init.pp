@@ -24,7 +24,6 @@ class minecraft {
   file { '/etc/systemd/system/minecraft.service':
     ensure => file,
     source => 'puppet:///modules/minecraft/minecraft.service',
-    content => "[Unit]\n Description=server minecraft\n Wants=network.target\n After=network.target\n[Service]\n WorkingDirectory=/opt/minecraft/\n ExecStart=/usr/bin/java -Xmx512M -Xms32M -jar server.jar nogui\n[Install]\n WantedBy=multi-user.target",
   }
   
   service { 'minecraft.service':
