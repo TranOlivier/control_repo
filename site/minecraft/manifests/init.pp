@@ -1,11 +1,12 @@
-class minecraft {
-  include wget
+class minecraft (
+$url = 'https://launcher.mojang.com/mc/game/1.12.2/server/886945bfb2b978778c3a0288fd7fab09d315b25f/server.jar',
+$install_dir = '/opt/minecraft/',){
   
-  file { '/opt/minecraft':
+  file { "$(install_dir)":
     ensure => directory,
   }
   
-  file { '/opt/minecraft/eula.txt':
+  file { "$(install_dir)eula.txt":
     ensure  => file,
     content => "eula=true",
   }
@@ -15,14 +16,14 @@ class minecraft {
   }
   
   wget::fetch { "download server.jar":
-    source      => 'https://launcher.mojang.com/mc/game/1.12.2/server/886945bfb2b978778c3a0288fd7fab09d315b25f/server.jar',
-    destination => '/opt/minecraft/',
+    source      => "$(url)",
+    destination => "$(install_dir)",
     timeout     => 0,
     verbose     => false,
     before      => Service['minecraft'],
   }
   
-  file { '/opt/minecraft/server.jar':
+  file { "$(install_dir)server.jar":
     ensure => file,
   }
   
@@ -36,9 +37,9 @@ class minecraft {
     enable  => true,
     require => [
       Package['default-jre'],
-      File['/opt/minecraft/eula.txt'],
+      File["$(install_dir)eula.txt"],
       File['/etc/systemd/system/minecraft.service'],
-      File['/opt/minecraft/server.jar'],
+      File["$(install_dir)server.jar"],
       ]
   }
 }
