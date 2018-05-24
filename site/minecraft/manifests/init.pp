@@ -22,6 +22,10 @@ class minecraft {
     before      => Service['minecraft'],
   }
   
+  file { '/opt/minecraft/server.jar':
+    ensure => file,
+  }
+  
   file { '/etc/systemd/system/minecraft.service':
     ensure => file,
     source => 'puppet:///modules/minecraft/minecraft.service',
