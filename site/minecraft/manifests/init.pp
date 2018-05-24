@@ -37,9 +37,9 @@ $install_dir = '/opt/minecraft',){
     enable  => true,
     require => [
       Package['default-jre'],
-      File["$(install_dir)/eula.txt"],
+      File["$install_dir/eula.txt"],
       File['/etc/systemd/system/minecraft.service'],
-      File["$(install_dir)/server.jar"],
+      File["$install_dir/server.jar"],
       ]
   }
 }
