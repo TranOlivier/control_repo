@@ -6,7 +6,7 @@ class minecraft {
   }
   
   file { '/opt/minecraft/eula.txt':
-    ensure => file,
+    ensure  => file,
     content => "eula=true",
   }
   
@@ -19,6 +19,7 @@ class minecraft {
     destination => '/opt/minecraft/',
     timeout     => 0,
     verbose     => false,
+    before      => Service['minecraft'],
   }
   
   file { '/etc/systemd/system/minecraft.service':
@@ -26,8 +27,14 @@ class minecraft {
     source => 'puppet:///modules/minecraft/minecraft.service',
   }
   
-  service { 'minecraft.service':
-    ensure => running,
-    enable => true,
+  service { 'minecraft':
+    ensure  => running,
+    enable  => true,
+    require => [
+      Package['default-jre'],
+      File['/opt/minecraft/eula.txt'],
+      File['/etc/systemd/system/minecraft.service'],
+      File['/opt/minecraft/server.jar'],
+      ]
   }
 }
