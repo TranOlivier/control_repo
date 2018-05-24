@@ -23,7 +23,7 @@ $install_dir = '/opt/minecraft',){
     before      => Service['minecraft'],
   }
   
-  file { "$(install_dir)/server.jar":
+  file { "$install_dir/server.jar":
     ensure => file,
   }
   
