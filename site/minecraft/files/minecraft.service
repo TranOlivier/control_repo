@@ -4,7 +4,7 @@
  After=network.target
 
 [Service]
- WorkingDirectory=<%= $install_dir %>	
+ WorkingDirectory= /opt/minecraft/
  ExecStart=/usr/bin/java -Xmx512M -Xms32M -jar server.jar nogui
 
 [Install]
