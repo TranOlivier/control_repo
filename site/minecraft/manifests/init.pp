@@ -18,7 +18,7 @@ $install_dir = '/opt/minecraft',){
   wget::fetch { "download server.jar":
     source      => "$url",
     destination => "$install_dir",
-    timeout     => 0,
+    timeout     => 15,
     verbose     => false,
     before      => Service['minecraft'],
   }
